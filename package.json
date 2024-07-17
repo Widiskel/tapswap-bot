@@ -1,21 +1,27 @@
 {
-  "name": "bot",
+  "name": "tap-swap-bot",
   "version": "1.0.0",
   "type": "module",
-  "description": "BOT",
+  "description": "tap-swap-bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "node test.js"
   },
   "keywords": [
-    "bot"
+    "bot",
+    "tapswap",
+    "tap-swap"
   ],
   "author": "Widiskel",
   "license": "ISC",
   "dependencies": {
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.45",
-    "winston": "^3.13.0"
+    "puppeteer": "^22.12.0",
+    "winston": "^3.13.0",
+    "input": "^1.0.1",
+    "telegram": "^2.22.2",
+    "twisters": "^1.1.0"
   }
 }
