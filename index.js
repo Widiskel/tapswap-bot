@@ -85,13 +85,14 @@ async function operation(user, query, url) {
 
   await tapswap.browser.close();
   await Helper.sleep(
-    5000,
+    60000 * 10,
     user,
     `Account ${user.firstName + " " + user.lastName}(${
       user.id
-    }) Processing Complete`,
+    }) Processing Complete, Delaying for 10 Minutes`,
     tapswap
   );
+  await operation(user, query, url);
 }
 
 let init = false;
@@ -138,8 +139,8 @@ async function startBot() {
 
       await Promise.all(promiseList);
       twist.clear();
-      logger.info(`BOT FINISHED RESTARTING`);
-      await startBot().then(resolve);
+      resolve();
+      logger.info(`BOT FINISHED`);
     } catch (error) {
       logger.info(`BOT STOPPED`);
       logger.error(JSON.stringify(error));
