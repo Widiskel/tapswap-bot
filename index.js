@@ -92,7 +92,6 @@ async function operation(user, query, url) {
     }) Processing Complete`,
     tapswap
   );
-  twist.clear();
 }
 
 let init = false;
@@ -138,6 +137,7 @@ async function startBot() {
       });
 
       await Promise.all(promiseList);
+      twist.clear();
       resolve();
     } catch (error) {
       logger.info(`BOT STOPPED`);
