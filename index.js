@@ -59,12 +59,12 @@ async function operation(user, query, url) {
     }
   }
 
-  // await Helper.sleep(
-  //   60000 * 6,
-  //   user,
-  //   `Delaying for 6 Min before completing missions`,
-  //   tapswap
-  // );
+  await Helper.sleep(
+    60000 * 6,
+    user,
+    `Delaying for 6 Min before completing missions`,
+    tapswap
+  );
 
   for (const missions of tapswap.account.missions.active) {
     const miss = tapswap.config.missions.filter(
