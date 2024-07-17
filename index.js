@@ -14,16 +14,16 @@ async function operation(user, query, url) {
   await Helper.sleep(2000, user, `Connected to Tap Swap`, tapswap);
 
   while (
-    (await tapswap.upgrade("charge")) == true &&
-    tapswap.player.charge_level != 5
+    tapswap.player.charge_level != 5 &&
+    (await tapswap.upgrade("charge")) == true
   ) {}
   while (
-    (await tapswap.upgrade("energy")) == true &&
-    tapswap.player.energy_level != 20
+    tapswap.player.energy_level != 20 &&
+    (await tapswap.upgrade("energy")) == true
   ) {}
   while (
-    (await tapswap.upgrade("tap")) == true &&
-    tapswap.player.tap_level != 20
+    tapswap.player.tap_level != 20 &&
+    (await tapswap.upgrade("tap")) == true
   ) {}
 
   const tap = Math.floor(tapswap.player.energy / tapswap.player.tap_level);
@@ -59,18 +59,19 @@ async function operation(user, query, url) {
     }
   }
 
-  await Helper.sleep(
-    60000 * 6,
-    user,
-    `Delaying for 6 Min before completing missions`,
-    tapswap
-  );
+  // await Helper.sleep(
+  //   60000 * 6,
+  //   user,
+  //   `Delaying for 6 Min before completing missions`,
+  //   tapswap
+  // );
 
   for (const missions of tapswap.account.missions.active) {
     const miss = tapswap.config.missions.filter(
       (item) => item.id == missions.id
     );
-    if (miss) {
+
+    if (miss.length != 0) {
       if (miss[0].items[0].require_answer == true) {
         const missionInput = MISSIONS[missions.id];
         if (missionInput != undefined) {
