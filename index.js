@@ -60,9 +60,9 @@ async function operation(user, query, url) {
   }
 
   await Helper.sleep(
-    60000 * 8,
+    60000 * 6,
     user,
-    `Delaying for 8 Min before completing missions`,
+    `Delaying for 6 Min before completing missions`,
     tapswap
   );
 
