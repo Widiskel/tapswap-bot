@@ -61,7 +61,7 @@ async function operation(user, query, url) {
     }
   }
 
-  if (onGoingMission.length != 0) {
+  if (tapswap.account.missions.active.length > 0) {
     await Helper.sleep(
       60000 * 6,
       user,
