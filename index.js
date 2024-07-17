@@ -138,7 +138,8 @@ async function startBot() {
 
       await Promise.all(promiseList);
       twist.clear();
-      resolve();
+      logger.info(`BOT FINISHED RESTARTING`);
+      await startBot().then(resolve);
     } catch (error) {
       logger.info(`BOT STOPPED`);
       logger.error(JSON.stringify(error));
