@@ -10,24 +10,17 @@ export class Helper {
     return new Promise((resolve) => {
       let remainingMilliseconds = ms;
 
-      if (acc) {
-        twist.log(msg, acc, obj, `Delaying for ${this.msToTime(ms)}`);
-      } else {
-        twist.info(`Delaying for ${this.msToTime(ms)}`);
-      }
+      twist.log(msg, acc, obj, `Delaying for ${this.msToTime(ms)}`);
 
       const interval = setInterval(() => {
         remainingMilliseconds -= 1000;
-        if (acc) {
-          twist.log(
-            msg,
-            acc,
-            obj,
-            `Delaying for ${this.msToTime(remainingMilliseconds)}`
-          );
-        } else {
-          twist.info(`Delaying for ${this.msToTime(remainingMilliseconds)}`);
-        }
+
+        twist.log(
+          msg,
+          acc,
+          obj,
+          `Delaying for ${this.msToTime(remainingMilliseconds)}`
+        );
 
         if (remainingMilliseconds <= 0) {
           clearInterval(interval);
