@@ -49,6 +49,7 @@ async function operation(user, query, url) {
     );
   }
 
+  const onGoingMission = [];
   for (const missions of tapswap.config.missions) {
     if (
       !tapswap.account.missions.completed.includes(missions.id) &&
@@ -56,30 +57,36 @@ async function operation(user, query, url) {
     ) {
       await tapswap.joinMissions(missions.id);
       await tapswap.finishMissionsItem(missions.id);
+      onGoingMission.push(missions.id);
     }
   }
 
-  await Helper.sleep(
-    60000 * 6,
-    user,
-    `Delaying for 6 Min before completing missions`,
-    tapswap
-  );
-
-  for (const missions of tapswap.account.missions.active) {
-    const miss = tapswap.config.missions.filter(
-      (item) => item.id == missions.id
+  if (onGoingMission.length != 0) {
+    await Helper.sleep(
+      60000 * 6,
+      user,
+      `Delaying for 6 Min before completing missions`,
+      tapswap
     );
 
-    if (miss.length != 0) {
-      if (miss[0].items[0].require_answer == true) {
-        const missionInput = MISSIONS[missions.id];
-        if (missionInput != undefined) {
-          await tapswap.finishMissionsItemWithInput(missions.id, missionInput);
+    for (const missions of tapswap.account.missions.active) {
+      const miss = tapswap.config.missions.filter(
+        (item) => item.id == missions.id
+      );
+
+      if (miss.length != 0) {
+        if (miss[0].items[0].require_answer == true) {
+          const missionInput = MISSIONS[missions.id];
+          if (missionInput != undefined) {
+            await tapswap.finishMissionsItemWithInput(
+              missions.id,
+              missionInput
+            );
+          }
         }
+        await tapswap.finishMissions(missions.id);
+        await tapswap.claimMission(missions.id);
       }
-      await tapswap.finishMissions(missions.id);
-      await tapswap.claimMission(missions.id);
     }
   }
 
