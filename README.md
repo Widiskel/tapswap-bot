@@ -31,7 +31,7 @@ Tap Swap Bot, is Tap game on Telegram.
 3. enter session name
 4. enter your phone number starting with countrycode ex : `+628xxxxxxxx`
 5. after creating sessions, choose 3 start bot, sometimes error happen when run bot afer creating session , just `ctrl+c` twice and `npm run start` again
-6. if something wrong with your sessions, reset sessions first, to cancel running bot press `ctrl+c` twice, and start again [from No 1.](#setup-session).
+6. if something wrong with your sessions, reset sessions first, to cancel running bot press `ctrl+c` twice, and start again [from No 1.](#setup-session). Remember reset session will delete all you sessions, you can also delete only the trouble sessions by `rm -rf sessions/YOURTROUBLESESSION` after that start to recreate sessions again
 
 ## Note
 
