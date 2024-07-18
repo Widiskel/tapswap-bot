@@ -20,7 +20,15 @@ Tap Swap Bot, is Tap game on Telegram.
 1. clone project repo `git clone https://github.com/Widiskel/tapswap-bot.git` and cd to project dir `cd tapswap-bot`
 2. run `npm install`
 3. run `cp src/config/config_tmp.js src/config/config.js`
-   To configure the app, open `src/config.js` and add your telegram app id and hash there
+   To configure the app, open `src/config.js` and add your telegram app id and hash there, also this bot using puppeter so you need to add you google chrome executable path
+   ```js
+  export class Config {
+    static TELEGRAM_APP_ID = undefined; // YOUR APP ID
+    static TELEGRAM_APP_HASH = undefined; // YOUR APP HASH
+    static CHROMEPATH =
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; //PATH TO YOUR EXECUTABLE CHROME OR CHROMIUM
+  }
+   ```
 4. run `mkdir sessions`
 5. to start the app run `npm run start`
 

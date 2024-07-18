@@ -1,8 +1,9 @@
-import puppeteer from "puppeteer";
 import { SecureUtil } from "../utils/secure_util.js";
 import { Helper } from "../utils/helper.js";
 import twist from "../utils/twist.js";
 import logger from "../utils/logger.js";
+import puppeteer from "puppeteer-core";
+import { Config } from "../config/config.js";
 
 export class TapSwap {
   constructor(acc, query, url) {
@@ -53,7 +54,9 @@ export class TapSwap {
   }
 
   async initAndLogin() {
-    this.browser = await puppeteer.launch();
+    this.browser = await puppeteer.launch({
+      executablePath: Config.CHROMEPATH,
+    });
     this.page = await this.browser.newPage();
     this.apiUrl = "https://api.tapswap.ai";
 

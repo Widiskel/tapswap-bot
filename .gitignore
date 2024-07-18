@@ -6,3 +6,4 @@ sessions/*
 src/reference/*
 .DS_Store
 src/config/config.js
+package-lock.json
