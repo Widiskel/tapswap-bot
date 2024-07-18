@@ -25,12 +25,11 @@ Tap Swap Bot, is Tap game on Telegram.
   export class Config {
     static TELEGRAM_APP_ID = undefined; // YOUR APP ID
     static TELEGRAM_APP_HASH = undefined; // YOUR APP HASH
-    static CHROMEPATH =
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; //PATH TO YOUR EXECUTABLE CHROME OR CHROMIUM
+    static CHROMEPATH = undefined; //PATH TO YOUR EXECUTABLE CHROME OR CHROMIUM EXAMPLE "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   }
    ```
-4. run `mkdir sessions`
-5. to start the app run `npm run start`
+1. run `mkdir sessions`
+2. to start the app run `npm run start`
 
 ## Setup Session
 
