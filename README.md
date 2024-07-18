@@ -11,6 +11,7 @@ Tap Swap Bot, is Tap game on Telegram.
 ## Prerequisite
 
 - Git
+- Chrome Browsers
 - Node JS
 - TELEGRAM_APP_ID & TELEGRAM_APP_HASH Get it from [Here](https://my.telegram.org/auth?to=apps)
 - Tap Swap Account , Create [Here](https://t.me/tapswap_mirror_bot?start=r_5703822759) ,join and claim join reward.
