@@ -2,7 +2,7 @@ import { SecureUtil } from "../utils/secure_util.js";
 import { Helper } from "../utils/helper.js";
 import twist from "../utils/twist.js";
 import logger from "../utils/logger.js";
-import puppeteer from "puppeteer-core";
+import puppeteer, { executablePath } from "puppeteer-core";
 import { Config } from "../config/config.js";
 
 export class TapSwap {
@@ -54,11 +54,10 @@ export class TapSwap {
   }
 
   async initAndLogin() {
-    if (Config.CHROMEPATH == undefined) {
-      throw Error("Please Setup Chorme or Chromium path to the config file");
-    }
     this.browser = await puppeteer.launch({
-      executablePath: Config.CHROMEPATH,
+      executablePath: executablePath("chrome"),
+      headless: true,
+      args: ["--no-sandbox", "--disable-gpu"],
     });
     this.page = await this.browser.newPage();
     this.apiUrl = "https://api.tapswap.ai";

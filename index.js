@@ -10,7 +10,10 @@ async function operation(user, query, url) {
   const tapswap = new TapSwap(user, query, url);
 
   twist.log(`Connecting to Tapswap`, user, tapswap);
-  await tapswap.initAndLogin();
+  await tapswap.initAndLogin().catch((err) => {
+    console.log(err);
+    process.exit();
+  });
   await Helper.sleep(2000, user, `Connected to Tap Swap`, tapswap);
 
   while (
