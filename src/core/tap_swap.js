@@ -54,6 +54,9 @@ export class TapSwap {
   }
 
   async initAndLogin() {
+    if (Config.CHROMEPATH == undefined) {
+      throw Error("Please Setup Chorme or Chromium path to the config file");
+    }
     this.browser = await puppeteer.launch({
       executablePath: Config.CHROMEPATH,
     });
