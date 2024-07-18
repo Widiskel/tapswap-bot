@@ -1,8 +1,10 @@
 export const MISSIONS = {
-  M1016: "5SP670KR66",
   M2012: "infinite",
-  M1015: "D5784VHPC377",
   M2013: "parachain",
+  M2014: "instamine",
+  M1015: "D5784VHPC377",
+  M1016: "5SP670KR66",
+  M1017: "D772WQ9Z5",
 
   getInput: function (value) {
     for (const key in this) {
