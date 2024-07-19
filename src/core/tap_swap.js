@@ -2,8 +2,7 @@ import { SecureUtil } from "../utils/secure_util.js";
 import { Helper } from "../utils/helper.js";
 import twist from "../utils/twist.js";
 import logger from "../utils/logger.js";
-import puppeteer, { executablePath } from "puppeteer-core";
-import { Config } from "../config/config.js";
+import puppeteer from "puppeteer";
 
 export class TapSwap {
   constructor(acc, query, url) {
@@ -54,13 +53,10 @@ export class TapSwap {
   }
 
   async initAndLogin() {
-    this.browser = await puppeteer.launch({
-      executablePath: executablePath("chrome"),
-      headless: true,
-      args: ["--no-sandbox", "--disable-gpu"],
-    });
+    logger.info(`Try to login using puppeter`);
+    this.browser = await puppeteer.launch();
     this.page = await this.browser.newPage();
-    this.apiUrl = "https://api.tapswap.ai";
+    this.apiUrl = "https://api.tapswap.club";
 
     await this.page.setRequestInterception(true);
 
@@ -71,14 +67,24 @@ export class TapSwap {
       "Sec-Ch-Ua-Mobile": "?1",
       "Sec-Ch-Ua-Platform": "android",
       "x-app": "tapswap_server",
-      "x-cv": "633",
       "x-touch": "1",
     };
     // console.log(headers);
     await this.page.setExtraHTTPHeaders(this.headers);
 
-    this.page.on("request", (request) => {
+    this.page.on("request", async (request) => {
       if (request.url().includes(this.apiUrl + "/api/")) {
+        if (
+          request.url().includes("login") &&
+          request.headers()["x-cv"] != undefined
+        ) {
+          this.xCv = request.headers()["x-cv"];
+          this.headers = {
+            "x-cv": this.xCv,
+            ...this.headers,
+          };
+          await this.page.setExtraHTTPHeaders(this.headers);
+        }
         const reqData = {
           type: "REQUEST",
           url: request.url(),
@@ -128,6 +134,7 @@ export class TapSwap {
     });
 
     await this.page.goto(this.launchUrl, { waitUntil: "networkidle0" });
+    logger.info("launching");
     // await this.browser.close();
   }
 
