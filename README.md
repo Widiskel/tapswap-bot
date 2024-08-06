@@ -6,7 +6,7 @@ Tap Swap Bot, is Tap game on Telegram.
 
 - Auto tap
 - Auto Use Booster (energy, turbo)
-- Auto Complete Daily missions
+- Auto Complete Daily missions (DISABLED)
 
 ## Prerequisite
 
