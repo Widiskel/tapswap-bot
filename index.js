@@ -53,46 +53,46 @@ async function operation(user, query, url) {
       );
     }
 
-    const onGoingMission = [];
-    for (const missions of tapswap.config.missions) {
-      if (
-        !tapswap.account.missions.completed.includes(missions.id) &&
-        !tapswap.account.missions.active.includes(missions.id)
-      ) {
-        await tapswap.joinMissions(missions.id);
-        await tapswap.finishMissionsItem(missions.id);
-        onGoingMission.push(missions.id);
-      }
-    }
+    // const onGoingMission = [];
+    // for (const missions of tapswap.config.missions) {
+    //   if (
+    //     !tapswap.account.missions.completed.includes(missions.id) &&
+    //     !tapswap.account.missions.active.includes(missions.id)
+    //   ) {
+    //     await tapswap.joinMissions(missions.id);
+    //     await tapswap.finishMissionsItem(missions.id);
+    //     onGoingMission.push(missions.id);
+    //   }
+    // }
 
-    if (tapswap.account.missions.active.length > 0) {
-      await Helper.sleep(
-        60000 * 6,
-        user,
-        `Delaying for 6 Min before completing missions`,
-        tapswap
-      );
+    // if (tapswap.account.missions.active.length > 0) {
+    //   await Helper.sleep(
+    //     60000 * 6,
+    //     user,
+    //     `Delaying for 6 Min before completing missions`,
+    //     tapswap
+    //   );
 
-      for (const missions of tapswap.account.missions.active) {
-        const miss = tapswap.config.missions.filter(
-          (item) => item.id == missions.id
-        );
+    //   for (const missions of tapswap.account.missions.active) {
+    //     const miss = tapswap.config.missions.filter(
+    //       (item) => item.id == missions.id
+    //     );
 
-        if (miss.length != 0) {
-          if (miss[0].items[0].require_answer == true) {
-            const missionInput = MISSIONS[missions.id];
-            if (missionInput != undefined) {
-              await tapswap.finishMissionsItemWithInput(
-                missions.id,
-                missionInput
-              );
-            }
-          }
-          await tapswap.finishMissions(missions.id);
-          await tapswap.claimMission(missions.id);
-        }
-      }
-    }
+    //     if (miss.length != 0) {
+    //       if (miss[0].items[0].require_answer == true) {
+    //         const missionInput = MISSIONS[missions.id];
+    //         if (missionInput != undefined) {
+    //           await tapswap.finishMissionsItemWithInput(
+    //             missions.id,
+    //             missionInput
+    //           );
+    //         }
+    //       }
+    //       await tapswap.finishMissions(missions.id);
+    //       await tapswap.claimMission(missions.id);
+    //     }
+    //   }
+    // }
 
     await tapswap.browser.close();
     await Helper.sleep(

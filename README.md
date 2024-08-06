@@ -44,6 +44,8 @@ Tap Swap Bot, is Tap game on Telegram.
 
 This bot using telegram sessions. if you ever use one of my bot that use telegram sessions, you can just copy the sessions folder to this bot. Also for the telegram APP ID and Hash you can use it on another bot.
 
+MISSION Auto Completion is now disabled due to take to much time and don't have data
+
 The missions is using my missions enums, that file that contains missions id an answer.
 ```js
 export const MISSIONS = {
