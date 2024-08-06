@@ -54,7 +54,9 @@ export class TapSwap {
 
   async initAndLogin() {
     logger.info(`Try to login using puppeter`);
-    this.browser = await puppeteer.launch();
+    this.browser = await puppeteer.launch({
+      args: ["--no-sandbox"],
+    });
     this.page = await this.browser.newPage();
     this.apiUrl = "https://api.tapswap.club";
 

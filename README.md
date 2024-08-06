@@ -20,7 +20,8 @@ Tap Swap Bot, is Tap game on Telegram.
 
 1. clone project repo `git clone https://github.com/Widiskel/tapswap-bot.git` and cd to project dir `cd tapswap-bot`
 2. run `npm install`
-3. run `cp src/config/config_tmp.js src/config/config.js`
+3. run `npm i telegram@2.22.2`
+4. run `cp src/config/config_tmp.js src/config/config.js`
    To configure the app, open `src/config.js` and add your telegram app id and hash there.
 ```js
   export class Config {
@@ -30,6 +31,10 @@ Tap Swap Bot, is Tap game on Telegram.
 ```
 1. run `mkdir sessions`
 2. to start the app run `npm run start`
+
+## Additional Setup ON Ubuntu
+1. run `sudo apt-get install chromium-browser`
+2. run `sudo apt-get install libx11-xcb1 libxcomposite1 libasound2 libatk1.0-0 libatk-bridge2.0-0 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6`
 
 ## Setup Session
 
